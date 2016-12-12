@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircleProgress">
+        <attr name="color1" format="reference|color"/>
+        <attr name="color2" format="reference|color"/>
+        <attr name="color3" format="reference|color"/>
+    </declare-styleable>
+    <declare-styleable name="DCircleProgress">
+        <attr name="colorinner" format="reference|color"/>
+        <attr name="colorouter" format="reference|color"/>
+        <attr name="radiusinner" format="reference|integer"/>
+        <attr name="radiusouter" format="reference|integer"/>
+        <attr name="step" format="reference|integer"/>
+        <attr name="width" format="reference|dimension"/>
+    </declare-styleable>
+</resources>

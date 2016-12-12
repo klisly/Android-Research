@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_home"
+        android:checked="true"
+        android:icon="@drawable/ic_find_black_24dp"
+        android:title="@string/home" />
+
+    <item
+        android:id="@+id/menu_mine"
+        android:icon="@drawable/ic_account_box_black_24dp"
+        android:title="@string/me" />
+
+    <item
+        android:id="@+id/menu_setting"
+        android:icon="@drawable/ic_settings_applications_black_24dp"
+        android:title="@string/setting" />
+    <item
+        android:id="@+id/menu_backup1"
+        android:icon="@drawable/ic_settings_applications_black_24dp"
+        android:title="@string/me" />
+
+    <item
+        android:id="@+id/menu_friends1"
+        android:icon="@drawable/ic_account_box_black_24dp"
+        android:title="@string/setting" />
+
+</menu>
