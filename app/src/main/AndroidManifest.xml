@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -69,7 +70,7 @@
         <activity android:name=".view.View1Activity" />
         <activity android:name=".widget.SearchActivity" />
         <activity
-            android:name=".component.NotificationActivity"
+            android:name=".component.notification.NotificationActivity"
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -77,7 +78,6 @@
             android:label="@string/title_activity_settings" />
         <activity android:name=".bottomnavigationViewpager.MainActivity" />
         <activity android:name=".widget.WidgetActivity" />
-
         <activity android:name=".component.service.ServiceActivity" />
         <activity android:name=".component.service.BasicServiceActivity" />
         <activity android:name=".component.service.IntentServiceActivity" />
@@ -86,6 +86,7 @@
         <activity android:name=".component.service.MessenagerServiceActivity" />
 
         <service android:name=".component.service.ForegroundService" />
+
         <receiver android:name=".component.service.ForegroundService$NotificationCloseButtonHandler" />
         <receiver android:name=".component.service.ForegroundService$NotificationPlayButtonHandler" />
         <receiver android:name=".component.service.ForegroundService$NotificationPrevButtonHandler" />
@@ -101,16 +102,33 @@
         <service
             android:name=".component.service.MyRemoteService"
             android:enabled="true"
-            android:process=":remote"
-            android:exported="true">
+            android:exported="true"
+            android:process=":remote">
             <intent-filter>
                 <action android:name="cn.iterlog.myapplication.component.service.action.remote_bb" />
             </intent-filter>
         </service>
         <service
             android:name=".component.service.MessengerService"
-            android:process=":remote">
-        </service>
+            android:process=":remote"></service>
+
+        <activity android:name=".widget.listview.ListActivity"></activity>
+        <activity android:name=".widget.listview.ListViewHolderScrollHideActivity"></activity>
+        <activity android:name=".widget.listview.OverScrollActivity"></activity>
+
+        <activity android:name=".widget.overscroll.overscrolllayout.MainActivity"></activity>
+        <activity android:name=".widget.overscroll.overscrolllayout.ListViewActivity"></activity>
+        <activity android:name=".widget.overscroll.overscrolllayout.GridViewActivity"></activity>
+        <activity android:name=".widget.overscroll.overscrolllayout.ScrollViewActivity"></activity>
+        <activity android:name=".widget.overscroll.overscrolllayout.HorizontalScrollViewActivity"></activity>
+        <activity android:name=".widget.overscroll.overscrolllayout.WebViewActivity"></activity>
+        <activity android:name=".widget.overscroll.overscrolllayout.PagerViewActivity"></activity>
+        <activity android:name=".widget.overscroll.overscrolllayout.CustomViewActivity"></activity>
+        <activity
+            android:name=".widget.overscroll.overscrolllayout.RecyclerViewActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+
     </application>
 
 </manifest>

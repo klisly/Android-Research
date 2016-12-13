@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cn.iterlog.myapplication.widget.overscroll.OverScrollLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/overscroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_blue_bright"
+    android:orientation="vertical">
+
+    <cn.iterlog.myapplication.widget.overscroll.overscrolllayout.MyListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></cn.iterlog.myapplication.widget.overscroll.overscrolllayout.MyListView>
+</cn.iterlog.myapplication.widget.overscroll.OverScrollLayout>

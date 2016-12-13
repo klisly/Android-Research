@@ -7,8 +7,7 @@ import android.view.View;
 import cn.iterlog.myapplication.BaseActivity;
 import cn.iterlog.myapplication.R;
 import cn.iterlog.myapplication.bottomnavigationViewpager.MainActivity;
-import cn.iterlog.myapplication.component.service.MessenagerServiceActivity;
-import cn.iterlog.myapplication.component.service.RemoteServiceActivity;
+import cn.iterlog.myapplication.widget.listview.ListActivity;
 
 public class WidgetActivity extends BaseActivity {
     @Override
@@ -32,14 +31,14 @@ public class WidgetActivity extends BaseActivity {
         findViewById(R.id.button3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(WidgetActivity.this, RemoteServiceActivity.class));
+                startActivity(new Intent(WidgetActivity.this, ListActivity.class));
             }
         });
 
         findViewById(R.id.button4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(WidgetActivity.this, MessenagerServiceActivity.class));
+                startActivity(new Intent(WidgetActivity.this, cn.iterlog.myapplication.widget.overscroll.overscrolllayout.MainActivity.class));
             }
         });
 

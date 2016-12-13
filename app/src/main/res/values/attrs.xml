@@ -13,4 +13,10 @@
         <attr name="step" format="reference|integer"/>
         <attr name="width" format="reference|dimension"/>
     </declare-styleable>
+
+    <declare-styleable name="StaggeredGridView">
+        <attr name="drawSelectorOnTop" format="boolean" />
+        <attr name="numColumns" format="integer" />
+        <attr name="itemMargin" format="dimension" />
+    </declare-styleable>
 </resources>

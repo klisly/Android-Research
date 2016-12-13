@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <cn.iterlog.myapplication.widget.overscroll.overscrolllayout.MyListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></cn.iterlog.myapplication.widget.overscroll.overscrolllayout.MyListView>
+
+    <cn.iterlog.myapplication.widget.overscroll.overscrolllayout.MyScrollView
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="800dp"
+                android:background="@color/colorPrimary"></TextView>
+        </LinearLayout>
+    </cn.iterlog.myapplication.widget.overscroll.overscrolllayout.MyScrollView>
+
+    <cn.iterlog.myapplication.widget.overscroll.overscrolllayout.MyhScrollView
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="400dp"
+                android:layout_height="match_parent"
+                android:background="#223344"></TextView>
+        </LinearLayout>
+    </cn.iterlog.myapplication.widget.overscroll.overscrolllayout.MyhScrollView>
+
+    <RelativeLayout
+        android:id="@+id/web_frame"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <cn.iterlog.myapplication.widget.overscroll.overscrolllayout.MyWebView
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"></cn.iterlog.myapplication.widget.overscroll.overscrolllayout.MyWebView>
+    </RelativeLayout>
+
+</FrameLayout>
+

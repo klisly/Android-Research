@@ -18,7 +18,7 @@ import java.util.List;
 
 import cn.iterlog.myapplication.activity.MainActivity;
 import cn.iterlog.myapplication.activity.transaction.TranActivity0;
-import cn.iterlog.myapplication.component.NotificationActivity;
+import cn.iterlog.myapplication.component.notification.NotificationActivity;
 import cn.iterlog.myapplication.component.service.ServiceActivity;
 import cn.iterlog.myapplication.dummy.DummyContent;
 import cn.iterlog.myapplication.view.ViewActivity;

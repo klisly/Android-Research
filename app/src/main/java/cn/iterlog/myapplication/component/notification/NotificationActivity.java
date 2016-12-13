@@ -1,4 +1,4 @@
-package cn.iterlog.myapplication.component;
+package cn.iterlog.myapplication.component.notification;
 
 import android.app.Notification;
 import android.app.NotificationManager;
