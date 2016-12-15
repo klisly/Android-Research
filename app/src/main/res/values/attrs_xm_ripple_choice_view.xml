@@ -1,11 +1,12 @@
 <resources>
     <declare-styleable name="RippleChoiceView">
-        <attr name="uncheckColor" format="color" />
-        <attr name="checkColor" format="color" />
+        <attr name="borderColor" format="color" />
+        <attr name="checkedColor" format="color" />
+        <attr name="backgroundColor" format="color" />
+        <attr name="crossColor" format="color" />
         <attr name="borderWidth" format="dimension" />
         <attr name="rippleduration" format="integer"/>
         <attr name="checked" format="boolean" />
-        <attr name="crossColor" format="color" />
         <attr name="crossType" format="string" />
         <attr name="number" format="integer" />
     </declare-styleable>

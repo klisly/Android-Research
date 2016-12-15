@@ -15,13 +15,14 @@
         android:layout_height="36dp"
         android:padding="2dp"
         app:borderWidth="2dp"
-        app:checkColor="@color/green"
+        app:checkedColor="@color/green"
+        app:backgroundColor="#77000000"
+        app:borderColor="@color/white"
+        app:crossColor="@android:color/white"
         app:checked="true"
-        app:crossColor="@color/white"
         app:number="2"
         app:crossType="number"
         app:rippleduration="300"
-        app:uncheckColor="@color/white"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 

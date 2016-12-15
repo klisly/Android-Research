@@ -25,6 +25,7 @@ public class RippleChoiceView extends View {
     private int mUnCheckColor = Color.WHITE;
     private int mCheckColor = Color.GREEN;
     private int mCrossColor = Color.BLUE;
+    private int mBgColor = Color.argb(128, 0, 0, 0);
     private String mCrossType = TYPE_CROSS_CROSS;
     private float mBorderWidth = dp2px(5);
     private RectF mRectF;
@@ -71,9 +72,11 @@ public class RippleChoiceView extends View {
         // Load attributes
         final TypedArray a = getContext().obtainStyledAttributes(
                 attrs, R.styleable.RippleChoiceView, defStyle, 0);
-        mUnCheckColor = a.getColor(R.styleable.RippleChoiceView_uncheckColor, mUnCheckColor);
-        mCheckColor = a.getColor(R.styleable.RippleChoiceView_checkColor, mCheckColor);
+        mUnCheckColor = a.getColor(R.styleable.RippleChoiceView_borderColor, mUnCheckColor);
+        mCheckColor = a.getColor(R.styleable.RippleChoiceView_checkedColor, mCheckColor);
         mCrossColor = a.getColor(R.styleable.RippleChoiceView_crossColor, mCrossColor);
+        mBgColor = a.getColor(R.styleable.RippleChoiceView_backgroundColor, mBgColor);
+
         String crossType = a.getString(R.styleable.RippleChoiceView_crossType);
         if (crossType.equals(TYPE_CROSS_NUMBER)) {
             mCrossType = TYPE_CROSS_NUMBER;
@@ -208,7 +211,7 @@ public class RippleChoiceView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        mUncheckPaint.setColor(Color.argb(128, 0, 0, 0));
+        mUncheckPaint.setColor(mBgColor);
         mUncheckPaint.setStyle(Paint.Style.FILL);
         canvas.drawCircle(mRectF.centerX(), mRectF.centerY(), mRadius - mBorderWidth, mUncheckPaint);
         mUncheckPaint.setColor(mUnCheckColor);
@@ -241,6 +244,7 @@ public class RippleChoiceView extends View {
             canvas.drawArc(mNRectF, 0f, 360f, false, mCheckPaint);
         }
 
+        mUncheckPaint.setColor(mCrossColor);
         if (mCrossType.equals(TYPE_CROSS_NUMBER)) {
             if (mChecked) {
                 mUncheckPaint.setTextSize(mRadius * 3 / 2);
