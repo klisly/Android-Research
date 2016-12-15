@@ -2,18 +2,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#9E9E9E"
-    >
+    android:background="#9E9E9E">
+    <ImageView
+        android:layout_width="480dp"
+        android:layout_height="480dp"
+        app:srcCompat="@mipmap/img1"
+        />
 
     <cn.iterlog.myapplication.view.ripplechoice.RippleChoiceView
-        android:layout_width="360dp"
-        android:layout_height="360dp"
-        app:uncheckColor="@color/white"
-        app:checkColor="@color/green"
-        app:crossColor="@color/white"
-        app:rippleduration="800"
+        android:id="@+id/choicview"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:padding="2dp"
         app:borderWidth="2dp"
-        android:padding="12dp"
-        android:layout_centerInParent="true"/>
+        app:checkColor="@color/green"
+        app:checked="true"
+        app:crossColor="@color/white"
+        app:number="2"
+        app:crossType="number"
+        app:rippleduration="300"
+        app:uncheckColor="@color/white"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

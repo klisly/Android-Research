@@ -24,6 +24,8 @@ public class RippleChoiceView extends View {
 
     private int mUnCheckColor = Color.WHITE;
     private int mCheckColor = Color.GREEN;
+    private int mCrossColor = Color.BLUE;
+    private String mCrossType = TYPE_CROSS_CROSS;
     private float mBorderWidth = dp2px(5);
     private RectF mRectF;
     private RectF mNRectF = new RectF();
@@ -44,6 +46,10 @@ public class RippleChoiceView extends View {
 
     private boolean mChecked = true;
     private boolean isHookShow = false;
+    private int mNumber = 0;
+
+    private static final String TYPE_CROSS_NUMBER = "number";
+    private static final String TYPE_CROSS_CROSS = "cross";
 
     public RippleChoiceView(Context context) {
         super(context);
@@ -67,8 +73,17 @@ public class RippleChoiceView extends View {
                 attrs, R.styleable.RippleChoiceView, defStyle, 0);
         mUnCheckColor = a.getColor(R.styleable.RippleChoiceView_uncheckColor, mUnCheckColor);
         mCheckColor = a.getColor(R.styleable.RippleChoiceView_checkColor, mCheckColor);
+        mCrossColor = a.getColor(R.styleable.RippleChoiceView_crossColor, mCrossColor);
+        String crossType = a.getString(R.styleable.RippleChoiceView_crossType);
+        if (crossType.equals(TYPE_CROSS_NUMBER)) {
+            mCrossType = TYPE_CROSS_NUMBER;
+        } else {
+            mCrossType = TYPE_CROSS_CROSS;
+        }
         mBorderWidth = a.getDimension(R.styleable.RippleChoiceView_borderWidth, dp2px(2));
         mDuration = a.getInt(R.styleable.RippleChoiceView_rippleduration, mDuration);
+        mChecked = a.getBoolean(R.styleable.RippleChoiceView_checked, mChecked);
+        mNumber = a.getInt(R.styleable.RippleChoiceView_number, mNumber);
         a.recycle();
         mHookDuration = (int) (mDuration * 0.3);
         mCircleDuration = mDuration - mHookDuration;
@@ -193,7 +208,7 @@ public class RippleChoiceView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        mUncheckPaint.setColor(Color.argb(128, 255, 255, 255));
+        mUncheckPaint.setColor(Color.argb(128, 0, 0, 0));
         mUncheckPaint.setStyle(Paint.Style.FILL);
         canvas.drawCircle(mRectF.centerX(), mRectF.centerY(), mRadius - mBorderWidth, mUncheckPaint);
         mUncheckPaint.setColor(mUnCheckColor);
@@ -206,7 +221,6 @@ public class RippleChoiceView extends View {
             } else {
                 mCheckPaint.setStrokeWidth(mRadius - stroke);
             }
-
             if (isHookShow) {
                 mNRectF.left = getPaddingLeft() + mRadius / 2;
                 mNRectF.top = getPaddingTop() + mRadius / 2;
@@ -224,20 +238,31 @@ public class RippleChoiceView extends View {
                 mNRectF.right = width - getPaddingRight() - (mRadius - stroke) / 2;
                 mNRectF.bottom = height - getPaddingBottom() - (mRadius - stroke) / 2;
             }
-
             canvas.drawArc(mNRectF, 0f, 360f, false, mCheckPaint);
         }
-        if (!mChecked && isHookShow) {
-            mFraction = 1 - mFraction;
-        }
 
-        if (isHookShow && mFraction > 0) {// y1 - x1
-            Log.i("isHookShow", isHookShow + " " + mFraction);
-            if (mFraction < 0.4) {
-                canvas.drawLine(hookStart.x, hookStart.y, getr1x((float) (mFraction / 0.4)), getr1y((float) (mFraction / 0.4)), mUncheckPaint);
-            } else {
-                canvas.drawLine(hookStart.x, hookStart.y, hookMiddle.x + 2, hookMiddle.y + 2, mUncheckPaint);
-                canvas.drawLine(hookMiddle.x, hookMiddle.y, getr2x((float) ((mFraction - 0.4) / 0.6)), getr2y((float) ((mFraction - 0.4f) / 0.6)), mUncheckPaint);
+        if (mCrossType.equals(TYPE_CROSS_NUMBER)) {
+            if (mChecked) {
+                mUncheckPaint.setTextSize(mRadius * 3 / 2);
+                mUncheckPaint.setStyle(Paint.Style.FILL);
+                Paint.FontMetrics metrics = mUncheckPaint.getFontMetrics();
+                int baseline = (int) ((mRectF.bottom + mRectF.top - metrics.bottom - metrics.top) / 2);
+                mUncheckPaint.setTextAlign(Paint.Align.CENTER);
+                canvas.drawText(String.valueOf(mNumber), mRectF.centerX(), baseline, mUncheckPaint);
+                mUncheckPaint.setStyle(Paint.Style.STROKE);
+            }
+        } else {
+            if (!mChecked && isHookShow) {
+                mFraction = 1 - mFraction;
+            }
+            if (isHookShow && mFraction > 0) {// y1 - x1
+                Log.i("isHookShow", isHookShow + " " + mFraction);
+                if (mFraction < 0.4) {
+                    canvas.drawLine(hookStart.x, hookStart.y, getr1x((float) (mFraction / 0.4)), getr1y((float) (mFraction / 0.4)), mUncheckPaint);
+                } else {
+                    canvas.drawLine(hookStart.x, hookStart.y, hookMiddle.x + 2, hookMiddle.y + 2, mUncheckPaint);
+                    canvas.drawLine(hookMiddle.x, hookMiddle.y, getr2x((float) ((mFraction - 0.4) / 0.6)), getr2y((float) ((mFraction - 0.4f) / 0.6)), mUncheckPaint);
+                }
             }
         }
     }
@@ -270,4 +295,60 @@ public class RippleChoiceView extends View {
         void onCheckedChanged(RippleChoiceView view, boolean isChecked);
     }
 
+    public int getmUnCheckColor() {
+        return mUnCheckColor;
+    }
+
+    public void setmUnCheckColor(int mUnCheckColor) {
+        this.mUnCheckColor = mUnCheckColor;
+    }
+
+    public int getmCheckColor() {
+        return mCheckColor;
+    }
+
+    public void setmCheckColor(int mCheckColor) {
+        this.mCheckColor = mCheckColor;
+    }
+
+    public int getmCrossColor() {
+        return mCrossColor;
+    }
+
+    public void setmCrossColor(int mCrossColor) {
+        this.mCrossColor = mCrossColor;
+    }
+
+    public String getmCrossType() {
+        return mCrossType;
+    }
+
+    public void setmCrossType(String mCrossType) {
+        this.mCrossType = mCrossType;
+    }
+
+    public float getmBorderWidth() {
+        return mBorderWidth;
+    }
+
+    public void setmBorderWidth(float mBorderWidth) {
+        this.mBorderWidth = mBorderWidth;
+    }
+
+    public OnCheckedChangeListener getmListener() {
+        return mListener;
+    }
+
+    public void setmListener(OnCheckedChangeListener mListener) {
+        this.mListener = mListener;
+    }
+
+    public int getmNumber() {
+        return mNumber;
+    }
+
+    public void setmNumber(int mNumber) {
+        this.mNumber = mNumber;
+        postInvalidate();
+    }
 }
