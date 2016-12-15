@@ -181,11 +181,14 @@ public class RippleChoiceView extends View {
         int action = event.getAction();
         switch (action) {
             case MotionEvent.ACTION_DOWN:
+                if(!isEnabled()){
+                    return false;
+                }
                 break;
             case MotionEvent.ACTION_MOVE:
                 break;
             case MotionEvent.ACTION_UP:
-                if (mIsAnimating) {
+                if (mIsAnimating ) {
                     return true;
                 }
                 if (x + getLeft() < getRight() && y + getTop() < getBottom()) {
@@ -355,4 +358,5 @@ public class RippleChoiceView extends View {
         this.mNumber = mNumber;
         postInvalidate();
     }
+
 }
