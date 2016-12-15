@@ -7,6 +7,7 @@ import android.view.View;
 
 import cn.iterlog.myapplication.R;
 import cn.iterlog.myapplication.view.circlehookview.CircleHookActivity;
+import cn.iterlog.myapplication.view.dcircle.View1Activity;
 import cn.iterlog.myapplication.view.dragview.DragViewActivity;
 import cn.iterlog.myapplication.view.ripplechoice.RippleChoiceActivity;
 import cn.iterlog.myapplication.view.rippleview.RippleActivity;

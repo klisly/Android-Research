@@ -1,4 +1,4 @@
-package cn.iterlog.myapplication.view;
+package cn.iterlog.myapplication.view.dcircle;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

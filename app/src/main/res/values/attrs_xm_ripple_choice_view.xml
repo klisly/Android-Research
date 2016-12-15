@@ -4,5 +4,6 @@
         <attr name="checkColor" format="color" />
         <attr name="crossColor" format="color" />
         <attr name="borderWidth" format="dimension" />
+        <attr name="rippleduration" format="integer"/>
     </declare-styleable>
 </resources>

@@ -6,12 +6,12 @@
     >
 
     <cn.iterlog.myapplication.view.ripplechoice.RippleChoiceView
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="360dp"
+        android:layout_height="360dp"
         app:uncheckColor="@color/white"
         app:checkColor="@color/green"
         app:crossColor="@color/white"
-        android:background="@color/colorPrimary"
+        app:rippleduration="800"
         app:borderWidth="2dp"
         android:padding="12dp"
         android:layout_centerInParent="true"/>

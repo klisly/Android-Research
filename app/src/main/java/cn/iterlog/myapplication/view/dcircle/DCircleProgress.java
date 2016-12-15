@@ -1,4 +1,4 @@
-package cn.iterlog.myapplication.view;
+package cn.iterlog.myapplication.view.dcircle;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -110,7 +110,6 @@ public class DCircleProgress extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         canvas.save();
-//        canvas.translate(mCenter.x, mCenter.y);
 
         canvas.drawArc(innerRect, innerStartAngle, innerSweepAngle, false, innerPaint);
         canvas.drawArc(outterRect, outerStartAngle, innerSweepAngle, false, outerPaint);

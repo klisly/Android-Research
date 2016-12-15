@@ -73,7 +73,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.View0Activity" />
-        <activity android:name=".view.View1Activity" />
+        <activity android:name=".view.dcircle.View1Activity" />
         <activity android:name=".view.rippleview.RippleActivity" />
         <activity android:name=".view.ripplechoice.RippleChoiceActivity" />
         <activity android:name=".view.circlehookview.CircleHookActivity"></activity>
