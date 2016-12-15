@@ -1,0 +1,19 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#9E9E9E">
+
+    <cn.iterlog.myapplication.view.circlehookview.CircleHookView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        app:circleSize="2dp"
+        app:circleColor="@color/colorAccent"
+        app:hookColor="@color/colorAccent"
+        app:hookSize="2dp"
+        app:duration="2000"
+        android:background="@color/colorPrimary"
+        android:padding="4dp" />
+
+</RelativeLayout>

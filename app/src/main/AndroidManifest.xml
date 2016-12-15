@@ -17,11 +17,11 @@
             android:name=".ItemListActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
         <activity
             android:name=".ItemDetailActivity"
@@ -65,9 +65,19 @@
             android:name=".activity.transaction.TranActivity1"
             android:label="@string/title_activity_tran1"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".view.ViewActivity" />
+
+        <activity android:name=".view.ViewActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".view.View0Activity" />
         <activity android:name=".view.View1Activity" />
+        <activity android:name=".view.rippleview.RippleActivity" />
+        <activity android:name=".view.ripplechoice.RippleChoiceActivity" />
+        <activity android:name=".view.circlehookview.CircleHookActivity"></activity>
+
         <activity android:name=".widget.SearchActivity" />
         <activity
             android:name=".component.notification.NotificationActivity"
@@ -78,6 +88,14 @@
             android:label="@string/title_activity_settings" />
         <activity android:name=".bottomnavigationViewpager.MainActivity" />
         <activity android:name=".widget.WidgetActivity" />
+
+        <activity android:name=".component.common.CommonActivity" />
+        <activity
+            android:name=".component.common.AsynTaskActivity"
+            android:label="@string/title_activity_asyn_task"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+
         <activity android:name=".component.service.ServiceActivity" />
         <activity android:name=".component.service.BasicServiceActivity" />
         <activity android:name=".component.service.IntentServiceActivity" />
@@ -110,24 +128,26 @@
         </service>
         <service
             android:name=".component.service.MessengerService"
-            android:process=":remote"></service>
+            android:process=":remote" />
 
-        <activity android:name=".widget.listview.ListActivity"></activity>
-        <activity android:name=".widget.listview.ListViewHolderScrollHideActivity"></activity>
-        <activity android:name=".widget.listview.OverScrollActivity"></activity>
-
-        <activity android:name=".widget.overscroll.overscrolllayout.MainActivity"></activity>
-        <activity android:name=".widget.overscroll.overscrolllayout.ListViewActivity"></activity>
-        <activity android:name=".widget.overscroll.overscrolllayout.GridViewActivity"></activity>
-        <activity android:name=".widget.overscroll.overscrolllayout.ScrollViewActivity"></activity>
-        <activity android:name=".widget.overscroll.overscrolllayout.HorizontalScrollViewActivity"></activity>
-        <activity android:name=".widget.overscroll.overscrolllayout.WebViewActivity"></activity>
-        <activity android:name=".widget.overscroll.overscrolllayout.PagerViewActivity"></activity>
-        <activity android:name=".widget.overscroll.overscrolllayout.CustomViewActivity"></activity>
+        <activity android:name=".widget.listview.ListActivity" />
+        <activity android:name=".widget.listview.ListViewHolderScrollHideActivity" />
+        <activity android:name=".widget.listview.OverScrollActivity" />
+        <activity android:name=".widget.listview.multitype.MultiActivity" />
+        <activity android:name=".widget.overscroll.overscrolllayout.MainActivity" />
+        <activity android:name=".widget.overscroll.overscrolllayout.ListViewActivity" />
+        <activity android:name=".widget.overscroll.overscrolllayout.GridViewActivity" />
+        <activity android:name=".widget.overscroll.overscrolllayout.ScrollViewActivity" />
+        <activity android:name=".widget.overscroll.overscrolllayout.HorizontalScrollViewActivity" />
+        <activity android:name=".widget.overscroll.overscrolllayout.WebViewActivity" />
+        <activity android:name=".widget.overscroll.overscrolllayout.PagerViewActivity" />
+        <activity android:name=".widget.overscroll.overscrolllayout.CustomViewActivity" />
         <activity
             android:name=".widget.overscroll.overscrolllayout.RecyclerViewActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".view.dragview.DragViewActivity"></activity>
+        <activity android:name=".view.dragview.LayoutDragActivity"></activity>
+        <activity android:name=".view.dragview.ViewDragHelperActivity"></activity>
 
     </application>
 

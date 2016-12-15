@@ -1,0 +1,8 @@
+<resources>
+    <declare-styleable name="RippleChoiceView">
+        <attr name="uncheckColor" format="color" />
+        <attr name="checkColor" format="color" />
+        <attr name="crossColor" format="color" />
+        <attr name="borderWidth" format="dimension" />
+    </declare-styleable>
+</resources>

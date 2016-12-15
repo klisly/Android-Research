@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import cn.iterlog.myapplication.R;
+import cn.iterlog.myapplication.widget.listview.multitype.MultiActivity;
 
 public class ListActivity extends AppCompatActivity {
 
@@ -23,6 +24,11 @@ public class ListActivity extends AppCompatActivity {
 
     public void btnFlexible(View view) {
         startActivity(new Intent(this, OverScrollActivity.class));
+    }
+
+
+    public void btnMultiType(View view) {
+        startActivity(new Intent(this, MultiActivity.class));
     }
 
 }

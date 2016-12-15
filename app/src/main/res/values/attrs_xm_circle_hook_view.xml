@@ -1,0 +1,10 @@
+<resources>
+    <declare-styleable name="CircleHookView">
+        <attr name="circleColor" format="color" />
+        <attr name="circleSize" format="dimension" />
+        <attr name="hookColor" format="color" />
+        <attr name="hookSize" format="dimension" />
+        <attr name="startAngle" format="integer" />
+        <attr name="duration" format="integer" />
+    </declare-styleable>
+</resources>

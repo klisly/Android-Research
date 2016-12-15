@@ -87,4 +87,5 @@
     <string name="remote_service_stopped">Remote Service Stop</string>
     <string name="local_service_label">Local Service</string>
     <string name="remote_service_connected">remote_service_connected</string>
+    <string name="title_activity_asyn_task">AsynTaskActivity</string>
 </resources>
