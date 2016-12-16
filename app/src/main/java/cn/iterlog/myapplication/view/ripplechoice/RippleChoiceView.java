@@ -20,6 +20,8 @@ import cn.iterlog.myapplication.R;
 public class RippleChoiceView extends View {
     // 点击控件的点
     private float mDensity;
+    private float scaledDensity;
+
     private float mRadius;
 
     private int mUnCheckColor = Color.WHITE;
@@ -28,6 +30,7 @@ public class RippleChoiceView extends View {
     private int mBgColor = Color.argb(128, 0, 0, 0);
     private String mCrossType = TYPE_CROSS_CROSS;
     private float mBorderWidth = dp2px(5);
+    private float mTextSize = sp2px(16);
     private RectF mRectF;
     private RectF mNRectF = new RectF();
 
@@ -69,6 +72,8 @@ public class RippleChoiceView extends View {
 
     private void init(AttributeSet attrs, int defStyle) {
         mDensity = getContext().getResources().getDisplayMetrics().density;
+        scaledDensity = getContext().getResources().getDisplayMetrics().scaledDensity;
+
         // Load attributes
         final TypedArray a = getContext().obtainStyledAttributes(
                 attrs, R.styleable.RippleChoiceView, defStyle, 0);
@@ -76,7 +81,7 @@ public class RippleChoiceView extends View {
         mCheckColor = a.getColor(R.styleable.RippleChoiceView_checkedColor, mCheckColor);
         mCrossColor = a.getColor(R.styleable.RippleChoiceView_crossColor, mCrossColor);
         mBgColor = a.getColor(R.styleable.RippleChoiceView_backgroundColor, mBgColor);
-
+        mTextSize = a.getDimension(R.styleable.RippleChoiceView_textSize, mTextSize);
         String crossType = a.getString(R.styleable.RippleChoiceView_crossType);
         if (crossType.equals(TYPE_CROSS_NUMBER)) {
             mCrossType = TYPE_CROSS_NUMBER;
@@ -156,6 +161,11 @@ public class RippleChoiceView extends View {
         return (int) (dp * mDensity + 0.5f);
     }
 
+    private int sp2px(int dp) {
+        return (int) (dp * scaledDensity + 0.5f);
+    }
+
+
     private int width;
     private int height;
 
@@ -173,6 +183,10 @@ public class RippleChoiceView extends View {
         hookEnd = new PointF(mRectF.centerX() + mRadius / 2, mRectF.centerY() - mRadius * 2 / 5);
     }
 
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -250,7 +264,7 @@ public class RippleChoiceView extends View {
         mUncheckPaint.setColor(mCrossColor);
         if (mCrossType.equals(TYPE_CROSS_NUMBER)) {
             if (mChecked) {
-                mUncheckPaint.setTextSize(mRadius * 3 / 2);
+                mUncheckPaint.setTextSize(mTextSize);
                 mUncheckPaint.setStyle(Paint.Style.FILL);
                 Paint.FontMetrics metrics = mUncheckPaint.getFontMetrics();
                 int baseline = (int) ((mRectF.bottom + mRectF.top - metrics.bottom - metrics.top) / 2);

@@ -22,6 +22,7 @@ import cn.iterlog.myapplication.component.common.CommonActivity;
 import cn.iterlog.myapplication.component.notification.NotificationActivity;
 import cn.iterlog.myapplication.component.service.ServiceActivity;
 import cn.iterlog.myapplication.dummy.DummyContent;
+import cn.iterlog.myapplication.graphics.GraphicsActivity;
 import cn.iterlog.myapplication.view.ViewActivity;
 import cn.iterlog.myapplication.widget.WidgetActivity;
 
@@ -114,6 +115,8 @@ public class ItemListActivity extends AppCompatActivity {
                         startActivity(new Intent(ItemListActivity.this, ServiceActivity.class));
                     }  else if (holder.mItem.id.equals("7")) {
                         startActivity(new Intent(ItemListActivity.this, CommonActivity.class));
+                    }  else if (holder.mItem.id.equals("8")) {
+                        startActivity(new Intent(ItemListActivity.this, GraphicsActivity.class));
                     }  else if (mTwoPane) {
                         Bundle arguments = new Bundle();
                         arguments.putString(ItemDetailFragment.ARG_ITEM_ID, holder.mItem.id);

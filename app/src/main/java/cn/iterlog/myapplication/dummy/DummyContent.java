@@ -32,6 +32,7 @@ public class DummyContent {
         addItem(new DummyItem(String.valueOf(5), "Notification", ""));
         addItem(new DummyItem(String.valueOf(6), "Service", ""));
         addItem(new DummyItem(String.valueOf(7), "Common", ""));
+        addItem(new DummyItem(String.valueOf(8), "Graphics", ""));
 
     }
 

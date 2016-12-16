@@ -18,6 +18,7 @@
         app:checkedColor="@color/green"
         app:backgroundColor="#77000000"
         app:borderColor="@color/white"
+        app:textSize="18sp"
         app:crossColor="@android:color/white"
         app:checked="true"
         app:number="2"

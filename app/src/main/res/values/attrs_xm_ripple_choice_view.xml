@@ -5,9 +5,10 @@
         <attr name="backgroundColor" format="color" />
         <attr name="crossColor" format="color" />
         <attr name="borderWidth" format="dimension" />
-        <attr name="rippleduration" format="integer"/>
+        <attr name="rippleduration" format="integer" />
         <attr name="checked" format="boolean" />
         <attr name="crossType" format="string" />
         <attr name="number" format="integer" />
+        <attr name="textSize" format="dimension" />
     </declare-styleable>
 </resources>

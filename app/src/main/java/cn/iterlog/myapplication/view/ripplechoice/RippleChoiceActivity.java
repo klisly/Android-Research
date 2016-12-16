@@ -30,6 +30,6 @@ public class RippleChoiceActivity extends AppCompatActivity {
             }
         });
         handler.postDelayed(runnable, 2000);
-        rippleChoiceView.setEnabled(false);
+//        rippleChoiceView.setEnabled(false);
     }
 }

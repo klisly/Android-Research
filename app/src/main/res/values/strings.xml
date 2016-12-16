@@ -88,4 +88,9 @@
     <string name="local_service_label">Local Service</string>
     <string name="remote_service_connected">remote_service_connected</string>
     <string name="title_activity_asyn_task">AsynTaskActivity</string>
+    <string name="title_activity_shader">ShaderActivity</string>
+
+    <string name="title_activity_graphics">GraphicsActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>
