@@ -7,6 +7,7 @@ import android.view.View;
 import cn.iterlog.myapplication.BaseActivity;
 import cn.iterlog.myapplication.R;
 import cn.iterlog.myapplication.bottomnavigationViewpager.MainActivity;
+import cn.iterlog.myapplication.widget.expandfloatbutton.ExpandFloatBtnActivity;
 import cn.iterlog.myapplication.widget.listview.ListActivity;
 
 public class WidgetActivity extends BaseActivity {
@@ -45,7 +46,7 @@ public class WidgetActivity extends BaseActivity {
         findViewById(R.id.button5).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(WidgetActivity.this, MainActivity.class));
+                startActivity(new Intent(WidgetActivity.this, ExpandFloatBtnActivity.class));
             }
         });
     }
