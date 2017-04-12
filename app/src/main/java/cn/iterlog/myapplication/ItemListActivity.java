@@ -18,6 +18,7 @@ import java.util.List;
 
 import cn.iterlog.myapplication.activity.MainActivity;
 import cn.iterlog.myapplication.activity.transaction.TranActivity0;
+import cn.iterlog.myapplication.component.brocastreceiver.BroadCastReceiverActivity;
 import cn.iterlog.myapplication.component.common.CommonActivity;
 import cn.iterlog.myapplication.component.notification.NotificationActivity;
 import cn.iterlog.myapplication.component.service.ServiceActivity;
@@ -117,6 +118,10 @@ public class ItemListActivity extends AppCompatActivity {
                         startActivity(new Intent(ItemListActivity.this, CommonActivity.class));
                     }  else if (holder.mItem.id.equals("8")) {
                         startActivity(new Intent(ItemListActivity.this, GraphicsActivity.class));
+                    }  else if (holder.mItem.id.equals("9")) {
+                        startActivity(new Intent(ItemListActivity.this, GraphicsActivity.class));
+                    }  else if (holder.mItem.id.equals("10")) {
+                        startActivity(new Intent(ItemListActivity.this, BroadCastReceiverActivity.class));
                     }  else if (mTwoPane) {
                         Bundle arguments = new Bundle();
                         arguments.putString(ItemDetailFragment.ARG_ITEM_ID, holder.mItem.id);

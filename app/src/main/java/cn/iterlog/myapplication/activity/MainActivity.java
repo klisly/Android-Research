@@ -87,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements ItemFragment.OnLi
                 intent.addCategory("cn.iterlog.category.c");
                 intent.setDataAndType(Uri.parse("file://abc"), "text/plain");
                 startActivity(intent);
+
             }
         });
         View view = getLayoutInflater().inflate(R.layout.pop, null);
@@ -100,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements ItemFragment.OnLi
             public void run() {
                 mPopupWindow.showAtLocation(getWindow().getDecorView(), Gravity.CENTER, 0, 0);
             }
-        }, 8000);
+        }, 5000);
         FragmentTransaction trans = mFragMgr.beginTransaction();
         trans.add(R.id.frameLayout, ItemFragment.newInstance(0));
         trans.commit();

@@ -14,7 +14,6 @@ public class SecondActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         findViewById(R.id.button1).setOnClickListener(new OnClickListener() {
@@ -39,7 +38,6 @@ public class SecondActivity extends Activity {
 
     @Override
     protected void onResume() {
-        // TODO Auto-generated method stub
         super.onResume();
         Log.d(TAG, "onResume");
     }

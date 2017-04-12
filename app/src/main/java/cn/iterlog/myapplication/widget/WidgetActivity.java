@@ -42,6 +42,12 @@ public class WidgetActivity extends BaseActivity {
             }
         });
 
+        findViewById(R.id.button5).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(WidgetActivity.this, MainActivity.class));
+            }
+        });
     }
 
 

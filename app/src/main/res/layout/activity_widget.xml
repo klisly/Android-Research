@@ -5,6 +5,12 @@
     android:layout_margin="15dp"
     android:orientation="vertical">
     <Button
+        android:id="@+id/button5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:iconifiedByDefault="false"
+        android:text="ExpandFloatButton" />
+    <Button
         android:id="@+id/button1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

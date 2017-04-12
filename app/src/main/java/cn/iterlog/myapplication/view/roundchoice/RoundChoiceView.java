@@ -1,4 +1,4 @@
-package cn.iterlog.myapplication.view.ripplechoice;
+package cn.iterlog.myapplication.view.roundchoice;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
@@ -17,7 +17,7 @@ import android.view.animation.AccelerateInterpolator;
 
 import cn.iterlog.myapplication.R;
 
-public class RippleChoiceView extends View {
+public class RoundChoiceView extends View {
     // 点击控件的点
     private float mDensity;
     private float scaledDensity;
@@ -37,7 +37,7 @@ public class RippleChoiceView extends View {
     private Paint mUncheckPaint;
     private Paint mCheckPaint;
     private float mFraction = 0.0f;
-    private OnCheckedChangeListener mListener;
+    private OnCheckedChangeListener onCheckedChangeListener;
     private ValueAnimator mFractionAnimator;
     private boolean mIsAnimating = false;
     private int mDuration = 1200;
@@ -55,17 +55,17 @@ public class RippleChoiceView extends View {
     private static final String TYPE_CROSS_NUMBER = "number";
     private static final String TYPE_CROSS_CROSS = "cross";
 
-    public RippleChoiceView(Context context) {
+    public RoundChoiceView(Context context) {
         super(context);
         init(null, 0);
     }
 
-    public RippleChoiceView(Context context, AttributeSet attrs) {
+    public RoundChoiceView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(attrs, 0);
     }
 
-    public RippleChoiceView(Context context, AttributeSet attrs, int defStyle) {
+    public RoundChoiceView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init(attrs, defStyle);
     }
@@ -76,22 +76,22 @@ public class RippleChoiceView extends View {
 
         // Load attributes
         final TypedArray a = getContext().obtainStyledAttributes(
-                attrs, R.styleable.RippleChoiceView, defStyle, 0);
-        mUnCheckColor = a.getColor(R.styleable.RippleChoiceView_borderColor, mUnCheckColor);
-        mCheckColor = a.getColor(R.styleable.RippleChoiceView_checkedColor, mCheckColor);
-        mCrossColor = a.getColor(R.styleable.RippleChoiceView_crossColor, mCrossColor);
-        mBgColor = a.getColor(R.styleable.RippleChoiceView_backgroundColor, mBgColor);
-        mTextSize = a.getDimension(R.styleable.RippleChoiceView_textSize, mTextSize);
-        String crossType = a.getString(R.styleable.RippleChoiceView_crossType);
+                attrs, R.styleable.RoundChoiceView, defStyle, 0);
+        mUnCheckColor = a.getColor(R.styleable.RoundChoiceView_borderColor, mUnCheckColor);
+        mCheckColor = a.getColor(R.styleable.RoundChoiceView_checkedColor, mCheckColor);
+        mCrossColor = a.getColor(R.styleable.RoundChoiceView_crossColor, mCrossColor);
+        mBgColor = a.getColor(R.styleable.RoundChoiceView_backgroundColor, mBgColor);
+        mTextSize = a.getDimension(R.styleable.RoundChoiceView_textSize, mTextSize);
+        String crossType = a.getString(R.styleable.RoundChoiceView_crossType);
         if (crossType.equals(TYPE_CROSS_NUMBER)) {
             mCrossType = TYPE_CROSS_NUMBER;
         } else {
             mCrossType = TYPE_CROSS_CROSS;
         }
-        mBorderWidth = a.getDimension(R.styleable.RippleChoiceView_borderWidth, dp2px(2));
-        mDuration = a.getInt(R.styleable.RippleChoiceView_rippleduration, mDuration);
-        mChecked = a.getBoolean(R.styleable.RippleChoiceView_checked, mChecked);
-        mNumber = a.getInt(R.styleable.RippleChoiceView_number, mNumber);
+        mBorderWidth = a.getDimension(R.styleable.RoundChoiceView_rippleBorderWidth, dp2px(2));
+        mDuration = a.getInt(R.styleable.RoundChoiceView_rippleduration, mDuration);
+        mChecked = a.getBoolean(R.styleable.RoundChoiceView_checked, mChecked);
+        mNumber = a.getInt(R.styleable.RoundChoiceView_number, mNumber);
         a.recycle();
         mHookDuration = (int) (mDuration * 0.3);
         mCircleDuration = mDuration - mHookDuration;
@@ -121,26 +121,23 @@ public class RippleChoiceView extends View {
         mFractionAnimator.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animator) {
-                Log.i("mFractionAnimator", "onAnimationStart");
                 mIsAnimating = true;
             }
 
             @Override
             public void onAnimationEnd(Animator animator) {
-                Log.i("mFractionAnimator", "onAnimationEnd");
                 mIsAnimating = false;
                 switchState();
             }
 
             @Override
             public void onAnimationCancel(Animator animator) {
-                Log.i("mFractionAnimator", "onAnimationCancel");
                 mIsAnimating = false;
+                mFraction = mChecked ? 1.0f : 0.0f;
             }
 
             @Override
             public void onAnimationRepeat(Animator animator) {
-                Log.i("mFractionAnimator", "onAnimationRepeat");
             }
         });
     }
@@ -180,7 +177,7 @@ public class RippleChoiceView extends View {
 
         hookStart = new PointF(mRectF.centerX() - mRadius / 2, mRectF.centerY() + mRadius / 10);
         hookMiddle = new PointF(mRectF.centerX() - mRadius * 1 / 6, mRectF.centerY() + mRadius * 2 / 5);
-        hookEnd = new PointF(mRectF.centerX() + mRadius / 2, mRectF.centerY() - mRadius * 2 / 5);
+        hookEnd = new PointF(mRectF.centerX() + mRadius / 2, mRectF.centerY() - mRadius * 1 / 3);
     }
 
     @Override
@@ -216,8 +213,8 @@ public class RippleChoiceView extends View {
                         initValueAnimator(mHookDuration);
                     }
                     mFractionAnimator.start();
-                    if (mListener != null) {
-                        mListener.onCheckedChanged(this, mChecked);
+                    if (onCheckedChangeListener != null) {
+                        onCheckedChangeListener.onCheckedChanged(this, mChecked);
                     }
                 }
                 break;
@@ -236,11 +233,16 @@ public class RippleChoiceView extends View {
         canvas.drawCircle(mRectF.centerX(), mRectF.centerY(), mRadius - mBorderWidth + 1, mUncheckPaint);
         if (mChecked || mIsAnimating) {
             float stroke = mFraction * mRadius;
+            if(!mIsAnimating){
+                stroke = mRadius;
+            }
+
             if (mChecked) {
                 mCheckPaint.setStrokeWidth(stroke);
             } else {
                 mCheckPaint.setStrokeWidth(mRadius - stroke);
             }
+
             if (isHookShow) {
                 mNRectF.left = getPaddingLeft() + mRadius / 2;
                 mNRectF.top = getPaddingTop() + mRadius / 2;
@@ -273,16 +275,25 @@ public class RippleChoiceView extends View {
                 mUncheckPaint.setStyle(Paint.Style.STROKE);
             }
         } else {
-            if (!mChecked && isHookShow) {
-                mFraction = 1 - mFraction;
-            }
-            if (isHookShow && mFraction > 0) {// y1 - x1
-                Log.i("isHookShow", isHookShow + " " + mFraction);
-                if (mFraction < 0.4) {
-                    canvas.drawLine(hookStart.x, hookStart.y, getr1x((float) (mFraction / 0.4)), getr1y((float) (mFraction / 0.4)), mUncheckPaint);
-                } else {
+
+            if(mIsAnimating) {
+                if (!mChecked && isHookShow) {
+                    mFraction = 1 - mFraction;
+                }
+
+                if (isHookShow && mFraction > 0) {// y1 - x1
+                    Log.i("isHookShow", isHookShow + " " + mFraction);
+                    if (mFraction < 0.4) {
+                        canvas.drawLine(hookStart.x, hookStart.y, getr1x((float) (mFraction / 0.4)), getr1y((float) (mFraction / 0.4)), mUncheckPaint);
+                    } else {
+                        canvas.drawLine(hookStart.x, hookStart.y, hookMiddle.x + 2, hookMiddle.y + 2, mUncheckPaint);
+                        canvas.drawLine(hookMiddle.x, hookMiddle.y, getr2x((float) ((mFraction - 0.4) / 0.6)), getr2y((float) ((mFraction - 0.4f) / 0.6)), mUncheckPaint);
+                    }
+                }
+            } else {
+                if(mChecked && isHookShow){
                     canvas.drawLine(hookStart.x, hookStart.y, hookMiddle.x + 2, hookMiddle.y + 2, mUncheckPaint);
-                    canvas.drawLine(hookMiddle.x, hookMiddle.y, getr2x((float) ((mFraction - 0.4) / 0.6)), getr2y((float) ((mFraction - 0.4f) / 0.6)), mUncheckPaint);
+                    canvas.drawLine(hookMiddle.x, hookMiddle.y, getr2x((float) ((1 - 0.4) / 0.6)), getr2y((float) ((1 - 0.4f) / 0.6)), mUncheckPaint);
                 }
             }
         }
@@ -313,7 +324,7 @@ public class RippleChoiceView extends View {
     }
 
     public static interface OnCheckedChangeListener {
-        void onCheckedChanged(RippleChoiceView view, boolean isChecked);
+        void onCheckedChanged(RoundChoiceView view, boolean isChecked);
     }
 
     public int getmUnCheckColor() {
@@ -356,12 +367,12 @@ public class RippleChoiceView extends View {
         this.mBorderWidth = mBorderWidth;
     }
 
-    public OnCheckedChangeListener getmListener() {
-        return mListener;
+    public OnCheckedChangeListener getOnCheckedChangeListener() {
+        return onCheckedChangeListener;
     }
 
-    public void setmListener(OnCheckedChangeListener mListener) {
-        this.mListener = mListener;
+    public void setOnCheckedChangeListener(OnCheckedChangeListener onCheckedChangeListener) {
+        this.onCheckedChangeListener = onCheckedChangeListener;
     }
 
     public int getmNumber() {
@@ -373,4 +384,13 @@ public class RippleChoiceView extends View {
         postInvalidate();
     }
 
+    public boolean ismChecked() {
+        return mChecked;
+    }
+
+    public void setmChecked(boolean mChecked) {
+        this.mChecked = mChecked;
+        this.isHookShow = mChecked;
+        invalidate();
+    }
 }

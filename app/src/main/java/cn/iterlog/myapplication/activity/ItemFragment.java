@@ -1,6 +1,5 @@
 package cn.iterlog.myapplication.activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -23,8 +22,6 @@ import android.view.animation.Animation;
 import cn.iterlog.myapplication.R;
 import cn.iterlog.myapplication.activity.dummy.DummyContent;
 import cn.iterlog.myapplication.activity.dummy.DummyContent.DummyItem;
-
-import java.util.List;
 
 /**
  * A fragment representing a list of Items.
@@ -62,7 +59,10 @@ public class ItemFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.i(TAG+mColumnCount, "onCreate");
-
+        setRetainInstance(true); //可以知道一旦我们设置 setRetainInstance(true)，
+        // 意味着在 Activity 重绘时，我们的 Fragment 不会被重复绘制，
+        // 也就是它会被“保留”。为了验证其作用，我们发现在设置为 true 状态时，旋转屏幕，
+        // Fragment 依然是之前的 Fragment。
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
@@ -137,6 +137,11 @@ public class ItemFragment extends Fragment {
     public void onStart() {
         Log.i(TAG+mColumnCount, "onStart");
         super.onStart();
+    }
+
+    @Override
+    public void setRetainInstance(boolean retain) {
+        super.setRetainInstance(retain);
     }
 
     @Override

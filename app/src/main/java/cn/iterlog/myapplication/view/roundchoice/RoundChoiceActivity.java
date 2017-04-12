@@ -1,4 +1,4 @@
-package cn.iterlog.myapplication.view.ripplechoice;
+package cn.iterlog.myapplication.view.roundchoice;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -7,8 +7,8 @@ import android.util.Log;
 
 import cn.iterlog.myapplication.R;
 
-public class RippleChoiceActivity extends AppCompatActivity {
-    RippleChoiceView rippleChoiceView;
+public class RoundChoiceActivity extends AppCompatActivity {
+    RoundChoiceView rippleChoiceView;
     private Handler handler = new Handler();
     private Runnable runnable = new Runnable() {
         @Override
@@ -22,14 +22,15 @@ public class RippleChoiceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.xm_ripple_choice_view);
-        rippleChoiceView = (RippleChoiceView) findViewById(R.id.choicview);
-        rippleChoiceView.setmListener(new RippleChoiceView.OnCheckedChangeListener() {
+        rippleChoiceView = (RoundChoiceView) findViewById(R.id.choicview);
+        rippleChoiceView.setOnCheckedChangeListener(new RoundChoiceView.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(RippleChoiceView view, boolean isChecked) {
+            public void onCheckedChanged(RoundChoiceView view, boolean isChecked) {
                 Log.i("onCheckedChanged", "onCheckedChanged:" + isChecked);
             }
         });
         handler.postDelayed(runnable, 2000);
+
 //        rippleChoiceView.setEnabled(false);
     }
 }

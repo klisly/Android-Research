@@ -54,6 +54,10 @@ public class BasicService extends Service {
     @Override
     public boolean onUnbind(Intent intent) {
         Log.d(TAG, "onUnbind() executed");
+        if(thread != null){
+            coutinue = false;
+            thread = null;
+        }
         return super.onUnbind(intent);
     }
 

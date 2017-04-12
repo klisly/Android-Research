@@ -30,10 +30,11 @@ public class DummyContent {
         addItem(new DummyItem(String.valueOf(3), "Widget", ""));
         addItem(new DummyItem(String.valueOf(4), "Custom View ", ""));
         addItem(new DummyItem(String.valueOf(5), "Notification", ""));
+        addItem(new DummyItem(String.valueOf(10), "BroadcaseReceiver", ""));
         addItem(new DummyItem(String.valueOf(6), "Service", ""));
         addItem(new DummyItem(String.valueOf(7), "Common", ""));
         addItem(new DummyItem(String.valueOf(8), "Graphics", ""));
-
+        addItem(new DummyItem(String.valueOf(9), "layout", ""));
     }
 
     private static void addItem(DummyItem item) {

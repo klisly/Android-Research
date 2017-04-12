@@ -78,7 +78,12 @@ public class BasicServiceActivity extends BaseActivity {
         findViewById(R.id.button4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                unbindService(connection);
+                service = null;
+                try {
+                    unbindService(connection);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
 

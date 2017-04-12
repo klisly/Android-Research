@@ -9,7 +9,7 @@ import cn.iterlog.myapplication.R;
 import cn.iterlog.myapplication.view.circlehookview.CircleHookActivity;
 import cn.iterlog.myapplication.view.dcircle.View1Activity;
 import cn.iterlog.myapplication.view.dragview.DragViewActivity;
-import cn.iterlog.myapplication.view.ripplechoice.RippleChoiceActivity;
+import cn.iterlog.myapplication.view.roundchoice.RoundChoiceActivity;
 import cn.iterlog.myapplication.view.rippleview.RippleActivity;
 
 public class ViewActivity extends AppCompatActivity {
@@ -39,7 +39,7 @@ public class ViewActivity extends AppCompatActivity {
         findViewById(R.id.button4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ViewActivity.this, RippleChoiceActivity.class));
+                startActivity(new Intent(ViewActivity.this, RoundChoiceActivity.class));
             }
         });
         findViewById(R.id.button5).setOnClickListener(new View.OnClickListener() {

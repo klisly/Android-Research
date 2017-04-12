@@ -56,6 +56,7 @@ public class RemoteServiceActivity extends BaseActivity {
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
+
             if (service != null) {
                 try {
                     Log.i(RemoteServiceActivity.class.getSimpleName(), "get num:" + service.getPersons().size());

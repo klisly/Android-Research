@@ -14,7 +14,6 @@ public class ThirdActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_third);
         findViewById(R.id.button1).setOnClickListener(new OnClickListener() {
@@ -32,14 +31,12 @@ public class ThirdActivity extends Activity {
 
     @Override
     protected void onStart() {
-        // TODO Auto-generated method stub
         super.onStart();
         Log.d(TAG, "onStart");
     }
 
     @Override
     protected void onResume() {
-        // TODO Auto-generated method stub
         super.onResume();
         Log.d(TAG, "onResume");
     }

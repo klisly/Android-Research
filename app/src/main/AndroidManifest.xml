@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cn.iterlog.myapplication">
-
+    <!--// 自定义一个权限-->
+    <permission
+        android:protectionLevel="normal"
+        android:name="klisly.permission.MY_BROADCAST_PERMISSION"/>
     <!-- To access Google+ APIs: -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.BATTERY_STATS"/>
+    <!--// 使用自定义权限-->
+    <uses-permission
+        android:protectionLevel="normal"
+        android:name="klisly.permission.MY_BROADCAST_PERMISSION"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,12 +27,10 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
+             <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
         </activity>
         <activity
             android:name=".ItemDetailActivity"
@@ -68,16 +75,16 @@
             android:label="@string/title_activity_tran1"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".view.ViewActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
         <activity android:name=".view.View0Activity" />
         <activity android:name=".view.dcircle.View1Activity" />
         <activity android:name=".view.rippleview.RippleActivity" />
-        <activity android:name=".view.ripplechoice.RippleChoiceActivity" />
+        <activity android:name=".view.roundchoice.RoundChoiceActivity" />
         <activity android:name=".view.circlehookview.CircleHookActivity" />
         <activity android:name=".widget.SearchActivity" />
         <activity
@@ -150,9 +157,9 @@
             android:name=".graphics.gradient.ShaderActivity"
             android:label="@string/title_activity_shader"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".graphics.gradient.canvas.CanvasActivity" />
+        <activity android:name=".graphics.canvas.CanvasActivity" />
         <activity android:name=".graphics.path.PathActivity" />
-        <activity android:name=".graphics.MatrixActivity" />
+        <activity android:name=".graphics.matrix.MatrixActivity" />
         <activity
             android:name=".graphics.GraphicsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -160,7 +167,40 @@
             android:theme="@style/FullscreenTheme" />
         <activity android:name=".opengl.OpenGLActivity" />
         <activity android:name=".graphics.paint.PaintActivity" />
-        <activity android:name=".JobActivity"></activity>
+        <activity android:name=".job.JobActivity" />
+        <activity android:name=".layout.CoordinatorLayoutActivity" />
+        <activity android:name=".layout.LayoutActivity" />
+        <activity android:name=".component.brocastreceiver.BroadCastReceiverActivity" />
+        <!--<activity-->
+            <!--android:name=".natives.NativeActivity"-->
+            <!--android:label="@string/title_activity_native"-->
+            <!--android:theme="@style/AppTheme.NoActionBar"></activity>-->
+
+        <receiver android:name=".component.brocastreceiver.normal.DefaultReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.MY_BROADCAST"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".component.brocastreceiver.NetworkReceiver" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".component.brocastreceiver.BatteryReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_CHANGED"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".component.brocastreceiver.bootcomplete.BootCompleteReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+        <service android:name=".component.brocastreceiver.bootcomplete.BackgroundService"/>
     </application>
 
 </manifest>

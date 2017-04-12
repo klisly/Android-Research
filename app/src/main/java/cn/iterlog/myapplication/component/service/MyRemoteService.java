@@ -10,10 +10,12 @@ import android.os.RemoteException;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import java.util.List;
 
 import cn.iterlog.myapplication.R;
+import cn.iterlog.myapplication.activity.MainActivity;
 
 /**
  * service中弹出提示框：
@@ -92,9 +94,10 @@ public class MyRemoteService extends Service {
             alertDialog.setNegativeButton("是",
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-//                            Intent intent = new Intent(getApplicationContext(), .class);
-//                            startActivity(intent);
-//                            Toast.makeText(getApplicationContext(), "Remote Servie Toast", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                            Toast.makeText(getApplicationContext(), "Remote Servie Toast", Toast.LENGTH_SHORT).show();
                         }
                     });
 
